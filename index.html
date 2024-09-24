@@ -213,16 +213,18 @@
 <body>
     <div id="mode-toggle"><i class="fas fa-sun"></i></div>
     <h1>Under the Hood</h1>
-    <div id="view-counter">Views: <span id="count">Loading...</span></div>
+    <!-- <div id="view-counter">Views: <span id="count">Loading...</span></div> -->
 
     <div id="intro">
-        <p>Welcome to Under the Hood, a curated collection of in-depth technical articles covering various aspects of
+        <p>Welcome to Under the Hood, a curated collection of in-depth technical articles written by me covering various aspects of
             computer science and software engineering. Whether you're a beginner or an experienced professional, dive
-            into our comprehensive resources to enhance your knowledge and skills.</p>
+            into this comprehensive list of articles which may help to enhance your knowledge and skills.</p>
     </div>
+
     <div id="search-container">
         <input type="text" id="search-input" placeholder="Search articles...">
     </div>
+
     <div id="toc">
         <h2>Table of Contents</h2>
         <ul>
@@ -588,33 +590,33 @@
             const namespace = isLocalFile || isLocalServer ? 'underthehood-local' : 'mohitmishra786-underthehood';
             const key = 'homepage-views';
 
-            // Function to update the view count
-            function updateViewCount() {
-                if (isLocalFile || isLocalServer) {
-                    // For local testing, use localStorage to simulate view counts
-                    let count = localStorage.getItem('localViewCount') || 47869;
-                    count = parseInt(count) + 1;
-                    localStorage.setItem('localViewCount', count);
-                    countElement.textContent = count;
-                } else if (isGitHubPages) {
-                    // For the live site on GitHub Pages, use CountAPI
-                    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            countElement.textContent = data.value;
-                        })
-                        .catch(error => {
-                            console.error('Error updating view count:', error);
-                            countElement.textContent = 'Error loading count';
-                        });
-                } else {
-                    // For other environments, display a placeholder
-                    countElement.textContent = 'Count not available';
-                }
-            }
+            // // Function to update the view count
+            // function updateViewCount() {
+            //     if (isLocalFile || isLocalServer) {
+            //         // For local testing, use localStorage to simulate view counts
+            //         let count = localStorage.getItem('localViewCount') || 47869;
+            //         count = parseInt(count) + 1;
+            //         localStorage.setItem('localViewCount', count);
+            //         countElement.textContent = count;
+            //     } else if (isGitHubPages) {
+            //         // For the live site on GitHub Pages, use CountAPI
+            //         fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+            //             .then(response => response.json())
+            //             .then(data => {
+            //                 countElement.textContent = data.value;
+            //             })
+            //             .catch(error => {
+            //                 console.error('Error updating view count:', error);
+            //                 countElement.textContent = 'Error loading count';
+            //             });
+            //     } else {
+            //         // For other environments, display a placeholder
+            //         countElement.textContent = 'Count not available';
+            //     }
+            // }
 
-            // Call the function to update the view count
-            updateViewCount();
+            // // Call the function to update the view count
+            // updateViewCount();
 
             // Back to Top button functionality
             window.addEventListener('scroll', () => {
