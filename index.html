@@ -1,219 +1,490 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Under the Hood</title>
-        <style>
-            body {
-                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-                line-height: 1.6;
-                background-color: #181818;
-                color: #d4d4d4;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 20px;
-            }
 
-            h1 {
-                color: #64ffda;
-                text-align: center;
-                margin-bottom: 30px;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under the Hood: A Technical Blog Aggregator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #181818;
+            --text-color: #d4d4d4;
+            --link-color: #00c3ff;
+            --highlight-color: #64ffda;
+            --secondary-color: #e8e8e8;
+        }
 
-            h2 {
-                color: #e8e8e8;
-                border-bottom: 1px solid #333;
-                padding-bottom: 10px;
-            }
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-size: 16px;
+        }
 
-            ul {
-                padding-left: 20px;
-            }
+        h1 {
+            color: var(--highlight-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
 
-            a {
-                color: #00c3ff;
-                text-decoration: none;
-                transition: color 0.2s ease;
-            }
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            font-size: 1.8em;
+            margin-top: 40px;
+        }
 
-            a:hover {
-                color: #64ffda;
-                text-decoration: underline;
-            }
+        p {
+            margin-bottom: 20px;
+        }
 
-            .container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-            }
+        ul {
+            padding-left: 20px;
+        }
 
-            .column {
-                flex: 1;
-                min-width: 300px;
-                padding: 0 15px;
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Under the Hood</h1>
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
 
-        <div class="container">
-            <div class="column">
-                <h2>Machine Learning</h2>
-                <ul>
-                    <li><a href="https://medium.com/nerd-for-tech/neural-networks-101-understanding-the-basics-0a4eb802d733">Neural Networks 101: Understanding the Basics</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/neural-networks-101-forward-propagation-5e5185368757">Neural Networks 101: Forward Propagation</a></li>
-                    <li><a href="https://medium.com/thedeephub/understanding-backpropagation-the-engine-behind-neural-networks-52a51d253fe3">Understanding Backpropagation: The Engine Behind Neural Networks</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/activation-functions-in-neural-networks-56dc526ad63c">Activation Functions in Neural Networks</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/stochastic-gradient-descent-a-basic-explanation-cbddc63f08e0">Stochastic Gradient Descent: A Basic Explanation</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/a-gentle-introduction-to-optimizing-gradient-descent-93670305826c">A Gentle Introduction to Optimizing Gradient Descent</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/exploring-loss-functions-in-machine-learning-3a2d63fd4211">Exploring Loss Functions in Machine Learning</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/regularization-the-key-to-building-better-machine-learning-models-7b24c03550e7">Regularization: The Key to Building Better Machine Learning Models</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/overfitting-has-many-faces-7ab43353f207">Overfitting Has Many Faces</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/argmax-and-softmax-5d80a07a0eba">ArgMax and SoftMax</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/why-hyperparameters-matter-50a71a99b11e">Why Hyperparameters Matter!</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/curse-of-dimensionality-ad949c04e77">Curse of Dimensionality</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/the-art-of-feature-engineering-d44e6ca041ea">The Art of Feature Engineering</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/correlation-in-machine-learning-what-you-need-to-know-6be28903c04">Correlation in Machine Learning: What You Need to Know</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/ensemble-learning-a-beginners-guide-c8d6bf283e6d">Ensemble Learning: A Beginner's Guide</a></li>
-                    <li><a href="https://medium.com/ai-mind-labs/shallow-neural-networks-dbeb9089fa03">Shallow Neural Networks</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/unveiling-multivariate-shallow-neural-network-magic-4209df40b21e">Unveiling Multivariate Shallow Neural Network Magic</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/recurrent-neural-network-rnn-671b69089734">The Power of Recurrent Neural Networks: A Fun Introduction</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/pooling-a-key-concept-in-machine-learning-81c05dcbce98">Pooling: A Key Concept in Machine Learning</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/paper-summary-imagenet-classification-with-deep-convolutional-neural-networks-543145f29f58">ImageNet Classification with Deep Convolutional Neural Networks</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/adaptive-learning-with-machine-learning-18b9a8a1e0a7">Adaptive Learning with Machine Learning</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/backpropagation-of-simple-expression-71da8603f216">Backpropagation of Simple Expression</a></li>
-                    <li><a href="https://medium.com/ai-science/gradient-descent-applications-in-machine-learning-857e85db7aa9">Gradient Descent: Applications in Machine Learning</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/the-curse-of-local-minima-how-to-escape-and-find-the-global-minimum-fdabceb2cd6a">The Curse of Local Minima: How to Escape and Find the Global Minimum</a></li>
-                </ul>
+        a:hover {
+            color: var(--highlight-color);
+            text-decoration: underline;
+        }
 
-                <h2>Database Systems</h2>
-                <ul>
-                    <li><a href="https://medium.com/illumination/why-mmap-is-a-bad-idea-for-databases-5efa49e05471">Why mmap is a Bad Idea for Databases?</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/djangos-database-connection-management-ad39a298d2e3">Django's Database Connection Management Architecture</a></li>
-                    <li><a href="https://medium.com/backenders-club/atomic-transactions-the-bedrock-of-reliable-database-systems-87cfb7932343">Atomic Transactions: The Bedrock of Reliable Database Systems</a></li>
-                    <li><a href="https://medium.com/backenders-club/dbms-behavior-how-different-systems-handle-the-void-e88f2ab18116">DBMS Behavior: How Different Systems Handle the Void</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/the-dual-nature-of-data-access-sequential-vs-random-in-database-systems-eac3f26a395e">The Dual Nature of Data Access: Sequential vs. Random in Database Systems</a></li>
-                    <li><a href="https://medium.com/illumination/ted-codds-legacy-from-flat-files-to-relational-power-f21486e3c4ce">Ted Codd's Legacy: From Flat Files to Relational Power</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1819756385145614483">Atomicity: The All-or-Nothing Guarantee That Protects Your Data</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1817885942662742044">WAL on a Roll: How Databases Handle Large Transactions and Rollbacks</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1816793316245004507">System Crash? No Sweat! The UNDO Log to the Rescue</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1816521062240186725">Let's Dig Into the Life Cycle of a Transaction In Database</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1814987228332069111">When the Log is Full: How Databases Prevent Data Loss During WAL/REDO Log Overflow</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1829841204525351114">Building a Database From Scratch: Why mmap Falls Short</a></li>
-                </ul>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-                <h2>C Programming and Memory Management</h2>
-                <ul>
-                    <li><a href="https://medium.com/illumination/hidden-costs-of-freedom-understanding-heap-performance-dee64e9da947">Hidden Costs of Freedom: Understanding Heap Performance</a></li>
-                    <li><a href="https://medium.com/illumination/stacking-the-odds-in-your-favor-unpacking-the-speed-of-the-execution-stack-29615b17f5bf">Stacking the Odds in Your Favor: Unpacking the Speed of the Execution Stack</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/the-cost-of-convenience-implications-of-padding-in-network-programming-0c309c40daac">The Cost of Convenience: Implications of Padding in Network Programming</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/understanding-bit-manipulation-in-c-20f8742e92a9">Understanding Bit Manipulation in C</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1837800466169975050">How to Access a Single Bit: Understanding Bit Manipulation in C</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1835196198313247068">Using Pragma Directives to Control Struct Padding</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1836080542468726953">Allocating Memory Until Failure</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1832441692584353862">Dynamic Memory Allocation and Address Calculation</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1832391549130510393">Understanding Address Calculation in Memory Management</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1830586939323396422">Why C Still Holds My Heart: My Confession</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1830276662807896465">Implementing a Custom Buffer Management System</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1820409670638444960">Finding the Right Byte: A Guide to Addressing, Memory, and Data Organization</a></li>
-                </ul>
+        .column {
+            flex: 1;
+            min-width: 300px;
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
 
-                <h2>Distributed Systems</h2>
-                <ul>
-                    <li><a href="https://medium.com/illumination/the-clockwork-of-distributed-systems-a-guide-to-timestamping-solutions-part-1-0a4bb70c47b9">The Clockwork of Distributed Systems: A Guide to Timestamping Solutions (Part-1)</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1813389140219818268">The CAP Theorem: Often Misunderstood</a></li>
-                </ul>
-            </div>
+        #view-counter {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: var(--highlight-color);
+        }
 
-            <div class="column">
-                <h2>Advanced Machine Learning</h2>
-                <ul>
-                    <li><a href="https://medium.com/@mohitmishra786687/paper-review-locating-and-editing-factual-associations-in-gp-5ad61f82441e">Locating and Editing Factual Associations in GP</a></li>
-                    <li><a href="https://medium.com/ai-mind-labs/paper-review-swin-transformer-hierarchical-vision-transformer-using-shifted-windows-7a3a03e47bba">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/paper-review-machine-learning-operations-overview-definition-and-architecture-8255a5e2ad28">Machine Learning Operations: Overview, Definition, and Architecture</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/paper-review-language-models-prompting-elicits-reasoning-in-large-language-models-b03f727f2c81">Language Models Prompting Elicits Reasoning in Large Language Models</a></li>
-                </ul>
+        #intro {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
 
-                <h2>Operating Systems</h2>
-                <ul>
-                    <li><a href="https://medium.com/illumination/why-you-shouldnt-read-directly-from-disk-f951585121b5">Why You Shouldn't Read Directly from Disk</a></li>
-                    <li><a href="https://medium.com/illumination/beyond-the-cpu-exploring-the-memory-controllers-role-in-computing-a904731fedf1">Beyond the CPU: Exploring the Memory Controller's Role in Computing</a></li>
-                    <li><a href="https://medium.com/illumination/one-core-many-threads-the-art-of-single-cpu-multithreading-33c3b8e607ab">One Core, Many Threads: The Art of Single-CPU Multithreading</a></li>
-                    <li><a href="https://medium.com/illumination/from-bits-to-bytes-understanding-sequential-access-in-memory-and-storage-1b712cc2c27d">From Bits to Bytes: Understanding Sequential Access in Memory and Storage</a></li>
-                    <li><a href="https://medium.com/nerd-for-tech/beyond-single-core-orchestrating-threads-across-cores-de651429bbb1">Beyond Single-Core: Orchestrating Threads Across Cores</a></li>
-                    <li><a href="https://medium.com/illumination/optimizing-memory-access-a-practical-guide-to-scheduling-algorithms-01a8de0c50da">Optimizing Memory Access: A Practical Guide to Scheduling Algorithms</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1837451787458236460">Ever Wonder How Linux Survives When it Runs Out of Memory?</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1836448855023669305">Out of Memory Killer</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1832113280070119634">Beyond RAM: The Hidden World of Page Tables, Large Pages, and Efficient Memory</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1831378279343034568">Why Your Computer Isn't as Slow as You Think: The Magic of the TLB</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1830945399785374116">From Virtual to Physical: A Step-by-Step Guide to Page Table Operations</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1829170581214031905">Concurrency and Memory Models: Why Your Multi-Threaded Code Might Not Behave As Expected</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1828446452168958455">Multithreading on Multiple CPUs</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1827366554344026434">Multithreading in a Single CPU</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1822550037404246339">Linux's Cloning Trick: Understanding fork() and the Magic of Copy-on-Write</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1822275260793983455">Inside the Page Table: A Deep Dive into Virtual Memory Mapping</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1821122922221584629">When Virtual Memory Hits a Bottleneck?</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1820867735099994341">The Magic of Page Tables</a></li>
-                </ul>
+        #toc {
+            background-color: #252525;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
 
-                <h2>Parallel Computing and CUDA</h2>
-                <ul>
-                    <li><a href="https://medium.com/ai-mind-labs/introduction-to-cuda-bc7331f0f987">Introduction to CUDA</a></li>
-                    <li><a href="https://medium.com/ai-mind-labs/cuda-beyond-the-basics-292859332345">CUDA Beyond the Basics</a></li>
-                    <li><a href="https://medium.com/ai-mind-labs/unlocking-cudas-potential-thread-hierarchy-and-parallel-execution-a629aecf5d22">Unlocking CUDA's Potential: Thread Hierarchy and Parallel Execution</a></li>
-                </ul>
+        #toc h2 {
+            margin-top: 0;
+        }
 
-                <h2>Software Architecture</h2>
-                <ul>
-                    <li><a href="https://medium.com/faun/deep-dive-into-monolith-and-microservices-2b284e206472">Deep Dive into Monolith and Microservices</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1756625642492412025">Event-Driven Architectures</a></li>
-                </ul>
+        #toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
 
-                <h2>Frontend Development</h2>
-                <ul>
-                    <li><a href="https://medium.com/@mohitmishra786687/everything-about-http-55c9aba440eb">Everything About HTTP</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/domain-name-system-d988239fdb15">Domain Name System</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/introductitypescript-1d4eed2c2094">Introduction to TypeScript</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/introduction-to-angular-1087f1639b39">Introduction to Angular</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/modules-and-routers-6ef6896ab25">Modules and Routers</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/components-metadata-and-data-binding-1703d5c5a592">Components, Metadata and Data Binding</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/getting-into-component-of-angular-5d43e5b10c26">Getting into Component of Angular</a></li>
-                </ul>
+        #toc li {
+            margin-bottom: 10px;
+        }
 
-                <h2>DevOps</h2>
-                <ul>
-                    <li><a href="https://medium.com/@mohitmishra786687/docker-513f26227578">Docker</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/kubernetes-d77d1ab438c0">Kubernetes</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/kafka-485a40493c4">Kafka</a></li>
-                    <li><a href="https://medium.com/@mohitmishra786687/quarkus-9a686b46c9e1">Quarkus</a></li>
-                </ul>
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
 
-                <h2>Computer Architecture and Hardware</h2>
-                <ul>
-                    <li><a href="https://x.com/chessMan786/status/1837096291731378377">Hybrid Prefetching: Memory Performance with Hardware and Software</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1834894136488739090">Boosting Program Speed with Software Prefetching</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1834256573947916397">Hardware Prefetching</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1833498583418737038">Everything You Need to Know About Prefetching</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1832757342221508857">Implementing Cache Management in Memory Controllers</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1826863481955778615">Deep Dive into Memory Controllers: Mastering Read/Write Grouping for Optimal Performance</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1826302319081709978">How CPUs Talk to DRAM: Exploring the Memory Access Pipeline</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1825450795963154465">Have you ever wondered how DRAM, the common memory in our computers, actually works?</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1825842777944375736">Inside the Memory Controller: Unlocking the Power of Address Translation and Command Scheduling</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1824783884334088390">Load, Store, and Optimize: How Caches Bridge the Gap Between CPU Speed and Memory Latency</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1824098585560113584">Bringing Cache to Life: Simulating a Two-Level Cache System in C</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1823651137334960214">The Hidden World of Cache: Understanding its Impact on Random Access Performance</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1823228992566022174">The Power of Predictability: How Sequential Access Unlocks Hardware Performance</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1822874775892423020">From HDDs to Caches: How Sequential Access Optimizes Data Flow</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1821794904621904132">Don't Be Fooled by the Void: Understanding the Differences Between Empty Strings and NULL</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1820388278404554777">From Files to Databases: Understanding the Impact of Sequential and Random Access</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1819794379990851830">Dance of the Data</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1806731516447244626">Record-Based Paginated Access</a></li>
-                    <li><a href="https://x.com/chessMan786/status/1777379305254957435">Why Stack is So Fast?</a></li>
-                </ul>
-            </div>
+        .category-icon {
+            margin-right: 10px;
+        }
+
+        #search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #search-input {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+            background-color: #252525;
+            color: var(--text-color);
+        }
+
+        #mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--highlight-color);
+            color: var(--bg-color);
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .light-mode {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --link-color: #0066cc;
+            --highlight-color: #4caf50;
+            --secondary-color: #555555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        .article-info { /* You can remove this style if you don't want the article info */
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mode-toggle"><i class="fas fa-sun"></i></div>
+    <h1>Under the Hood: A Technical Blog Aggregator</h1>
+    <div id="view-counter">Views: <span id="count">Loading...</span></div>
+
+    <div id="intro">
+        <p>Welcome to Under the Hood, a curated collection of in-depth technical articles covering various aspects of computer science and software engineering. Whether you're a beginner or an experienced professional, dive into our comprehensive resources to enhance your knowledge and skills.</p>
+    </div>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search articles...">
+    </div>
+    <div id="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#machine-learning">Machine Learning</a></li>
+            <li><a href="#database-systems">Database Systems</a></li>
+            <li><a href="#c-programming">C Programming and Memory Management</a></li>
+            <li><a href="#computer-architecture">Computer Architecture and Hardware</a></li>
+            <li><a href="#advanced-machine-learning">Advanced Machine Learning</a></li>
+            <li><a href="#operating-systems">Operating Systems</a></li>
+            <li><a href="#parallel-computing">Parallel Computing and CUDA</a></li>
+            <li><a href="#software-architecture">Software Architecture</a></li>
+            <li><a href="#frontend-development">Frontend Development</a></li>
+            <li><a href="#devops">DevOps</a></li>
+            <li><a href="#distributed-systems">Distributed Systems</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="column">
+            <h2 id="machine-learning"><i class="fas fa-brain category-icon"></i>Machine Learning</h2>
+            <p>You'll start with the basics of how these learning systems work, like understanding "neural networks" (which are inspired by the human brain!) and how they process information. We'll cover important ideas like how to stop the systems from making silly mistakes and how to make them work really well.</p>
+            <ul>
+                <li><a href="https://medium.com/nerd-for-tech/neural-networks-101-understanding-the-basics-0a4eb802d733">Neural Networks 101: Understanding the Basics</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/neural-networks-101-forward-propagation-5e5185368757">Neural Networks 101: Forward Propagation</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/activation-functions-in-neural-networks-56dc526ad63c">Activation Functions in Neural Networks</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/stochastic-gradient-descent-a-basic-explanation-cbddc63f08e0">Stochastic Gradient Descent: A Basic Explanation</a></li>
+                <li><a href="https://medium.com/thedeephub/understanding-backpropagation-the-engine-behind-neural-networks-52a51d253fe3">Understanding Backpropagation: The Engine Behind Neural Networks</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/a-gentle-introduction-to-optimizing-gradient-descent-93670305826c">A Gentle Introduction to Optimizing Gradient Descent</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/exploring-loss-functions-in-machine-learning-3a2d63fd4211">Exploring Loss Functions in Machine Learning</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/argmax-and-softmax-5d80a07a0eba">ArgMax and SoftMax</a></li>
+                <li><a href="https://medium.com/ai-mind-labs/shallow-neural-networks-dbeb9089fa03">Shallow Neural Networks</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/regularization-the-key-to-building-better-machine-learning-models-7b24c03550e7">Regularization: The Key to Building Better Machine Learning Models</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/overfitting-has-many-faces-7ab43353f207">Overfitting Has Many Faces</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/why-hyperparameters-matter-50a71a99b11e">Why Hyperparameters Matter!</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/curse-of-dimensionality-ad949c04e77">Curse of Dimensionality</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/the-art-of-feature-engineering-d44e6ca041ea">The Art of Feature Engineering</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/correlation-in-machine-learning-what-you-need-to-know-6be28903c04">Correlation in Machine Learning: What You Need to Know</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/ensemble-learning-a-beginners-guide-c8d6bf283e6d">Ensemble Learning: A Beginner's Guide</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/unveiling-multivariate-shallow-neural-network-magic-4209df40b21e">Unveiling Multivariate Shallow Neural Network Magic</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/recurrent-neural-network-rnn-671b69089734">The Power of Recurrent Neural Networks: A Fun Introduction</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/pooling-a-key-concept-in-machine-learning-81c05dcbce98">Pooling: A Key Concept in Machine Learning</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/paper-summary-imagenet-classification-with-deep-convolutional-neural-networks-543145f29f58">ImageNet Classification with Deep Convolutional Neural Networks</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/adaptive-learning-with-machine-learning-18b9a8a1e0a7">Adaptive Learning with Machine Learning</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/backpropagation-of-simple-expression-71da8603f216">Backpropagation of Simple Expression</a></li>
+                <li><a href="https://medium.com/ai-science/gradient-descent-applications-in-machine-learning-857e85db7aa9">Gradient Descent: Applications in Machine Learning</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/the-curse-of-local-minima-how-to-escape-and-find-the-global-minimum-fdabceb2cd6a">The Curse of Local Minima: How to Escape and Find the Global Minimum</a></li>
+            </ul>
+
+            <h2 id="database-systems"><i class="fas fa-database category-icon"></i>Database Systems</h2>
+            <p>You'll learn how databases make sure that the information is accurate and doesn't get lost, even if the
+                computer crashes! We'll cover important ideas like "transactions" (which help keep things organized),
+                special logs that act like backup plans, and different ways to access the information quickly.</p>
+            <ul>
+                <li><a href="https://medium.com/illumination/ted-codds-legacy-from-flat-files-to-relational-power-f21486e3c4ce">Ted Codd's Legacy: From Flat Files to Relational Power</a></li>
+                <li><a href="https://x.com/chessMan786/status/1816521062245004507">Let's Dig Into the Life Cycle of a Transaction In Database</a></li>
+                <li><a href="https://medium.com/backenders-club/atomic-transactions-the-bedrock-of-reliable-database-systems-87cfb7932343">Atomic Transactions: The Bedrock of Reliable Database Systems</a></li>
+                <li><a href="https://x.com/chessMan786/status/1819756385145614483">Atomicity: The All-or-Nothing Guarantee That Protects Your Data</a></li>
+                <li><a href="https://x.com/chessMan786/status/1816793316245004507">System Crash? No Sweat! The UNDO Log to the Rescue</a></li>
+                <li><a href="https://x.com/chessMan786/status/1817885942662742044">WAL on a Roll: How Databases Handle Large Transactions and Rollbacks</a></li>
+                <li><a href="https://x.com/chessMan786/status/1814987228332069111">When the Log is Full: How Databases Prevent Data Loss During WAL/REDO Log Overflow</a></li>
+                <li><a href="https://medium.com/backenders-club/dbms-behavior-how-different-systems-handle-the-void-e88f2ab18116">DBMS Behavior: How Different Systems Handle the Void</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/djangos-database-connection-management-ad39a298d2e3">Django's Database Connection Management Architecture</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/the-dual-nature-of-data-access-sequential-vs-random-in-database-systems-eac3f26a395e">The Dual Nature of Data Access: Sequential vs. Random in Database Systems</a></li>
+                <li><a href="https://medium.com/illumination/why-mmap-is-a-bad-idea-for-databases-5efa49e05471">Why mmap is a Bad Idea for Databases?</a></li>
+                <li><a href="https://x.com/chessMan786/status/1829841204525351114">Building a Database From Scratch: Why mmap Falls Short</a></li>
+            </ul>
+
+            <h2 id="c-programming"><i class="fas fa-code category-icon"></i>C Programming and Memory Management</h2>
+            <p>We'll explore different ways to store information in memory and how to make sure your programs use
+                memory efficiently. You'll become a more skilled programmer by understanding these low-level details.
+            </p>
+            <ul>
+                <li><a href="https://medium.com/illumination/stacking-the-odds-in-your-favor-unpacking-the-speed-of-the-execution-stack-29615b17f5bf">Stacking the Odds in Your Favor: Unpacking the Speed of the Execution Stack</a></li>
+                <li><a href="https://medium.com/illumination/hidden-costs-of-freedom-understanding-heap-performance-dee64e9da947">Hidden Costs of Freedom: Understanding Heap Performance</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/understanding-bit-manipulation-in-c-20f8742e92a9">Understanding Bit Manipulation in C</a></li>
+                <li><a href="https://x.com/chessMan786/status/1837800466169975050">How to Access a Single Bit: Understanding Bit Manipulation in C</a></li>
+                <li><a href="https://x.com/chessMan786/status/1820409670638444960">Finding the Right Byte: A Guide to Addressing, Memory, and Data Organization</a></li>
+                <li><a href="https://x.com/chessMan786/status/1832391549130510393">Understanding Address Calculation in Memory Management</a></li>
+                <li><a href="https://x.com/chessMan786/status/1832441692584353862">Dynamic Memory Allocation and Address Calculation</a></li>
+                <li><a href="https://x.com/chessMan786/status/1836080542468726953">Allocating Memory Until Failure</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/the-cost-of-convenience-implications-of-padding-in-network-programming-0c309c40daac">The Cost of Convenience: Implications of Padding in Network Programming</a></li>
+                <li><a href="https://x.com/chessMan786/status/1835196198313247068">Using Pragma Directives to Control Struct Padding</a></li>
+                <li><a href="https://x.com/chessMan786/status/1830586939323396422">Why C Still Holds My Heart: My Confession</a></li>
+                <li><a href="https://x.com/chessMan786/status/1830276662807896465">Implementing a Custom Buffer Management System</a></li>
+            </ul>
+
+            <h2 id="computer-architecture"><i class="fas fa-microchip category-icon"></i>Computer Architecture and Hardware</h2>
+            <p>Here You'll learn how the CPU (the brain of your computer), memory, and storage all work together
+                to make your computer run. We'll explore ways to make your computer faster and more efficient by
+                understanding how the hardware works.</p>
+            <ul>
+                <li><a href="https://x.com/chessMan786/status/1819794379990851830">Dance of the Data</a></li>
+                <li><a href="https://x.com/chessMan786/status/1823228992566022174">The Power of Predictability: How Sequential Access Unlocks Hardware Performance</a></li>
+                <li><a href="https://x.com/chessMan786/status/1822874775892423020">From HDDs to Caches: How Sequential Access Optimizes Data Flow</a></li>
+                <li><a href="https://x.com/chessMan786/status/1820388278404554777">From Files to Databases: Understanding the Impact of Sequential and Random Access</a></li>
+                <li><a href="https://x.com/chessMan786/status/1806731516447244626">Record-Based Paginated Access</a></li>
+                <li><a href="https://x.com/chessMan786/status/1823651137334960214">The Hidden World of Cache: Understanding its Impact on Random Access Performance</a></li>
+                <li><a href="https://x.com/chessMan786/status/1824098585560113584">Bringing Cache to Life: Simulating a Two-Level Cache System in C</a></li>
+                <li><a href="https://x.com/chessMan786/status/1824783884334088390">Load, Store, and Optimize: How Caches Bridge the Gap Between CPU Speed and Memory Latency</a></li>
+                <li><a href="https://x.com/chessMan786/status/1777379305254957435">Why Stack is So Fast?</a></li>
+                <li><a href="https://x.com/chessMan786/status/1825450795963154465">Have you ever wondered how DRAM, the common memory in our computers, actually works?</a></li>
+                <li><a href="https://x.com/chessMan786/status/1825842777944375736">Inside the Memory Controller: Unlocking the Power of Address Translation and Command Scheduling</a></li>
+                <li><a href="https://x.com/chessMan786/status/1826302319081709978">How CPUs Talk to DRAM: Exploring the Memory Access Pipeline</a></li>
+                <li><a href="https://x.com/chessMan786/status/1826863481955778615">Deep Dive into Memory Controllers: Mastering Read/Write Grouping for Optimal Performance</a></li>
+                <li><a href="https://x.com/chessMan786/status/1832757342221508857">Implementing Cache Management in Memory Controllers</a></li>
+                <li><a href="https://x.com/chessMan786/status/1833498583418737038">Everything You Need to Know About Prefetching</a></li>
+                <li><a href="https://x.com/chessMan786/status/1834256573947916397">Hardware Prefetching</a></li>
+                <li><a href="https://x.com/chessMan786/status/1834894136488739090">Boosting Program Speed with Software Prefetching</a></li>
+                <li><a href="https://x.com/chessMan786/status/1837096291731378377">Hybrid Prefetching: Memory Performance with Hardware and Software</a></li>
+            </ul>
         </div>
-    </body>
+
+        <div class="column">
+            <h2 id="advanced-machine-learning"><i class="fas fa-rocket category-icon"></i>Advanced Machine Learning</h2>
+            <p>Once you understand the basics of Machine Learning, this section takes you to the cutting edge! You'll
+                learn about powerful new techniques and systems that are pushing the boundaries of what computers can
+                learn. We'll dive into some of the most advanced research in the field, so get ready for a challenge!
+            </p>
+            <ul>
+                <li><a href="https://medium.com/@mohitmishra786687/paper-review-machine-learning-operations-overview-definition-and-architecture-8255a5e2ad28">Machine Learning Operations: Overview, Definition, and Architecture</a></li>
+                <li><a href="https://medium.com/ai-mind-labs/paper-review-swin-transformer-hierarchical-vision-transformer-using-shifted-windows-7a3a03e47bba">Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/paper-review-language-models-prompting-elicits-reasoning-in-large-language-models-b03f727f2c81">Language Models Prompting Elicits Reasoning in Large Language Models</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/paper-review-locating-and-editing-factual-associations-in-gp-5ad61f82441e">Locating and Editing Factual Associations in GP</a></li>
+            </ul>
+
+            <h2 id="operating-systems"><i class="fas fa-desktop category-icon"></i>Operating Systems</h2>
+            <p>Here You'll learn how the "operating system" acts
+                like the boss, managing all the different parts of your computer and making sure everything runs
+                smoothly. We'll explore how the operating system handles multiple tasks at once, how it organizes
+                memory, and how it makes sure your programs have the resources they need.</p>
+            <ul>
+                <li><a href="https://medium.com/illumination/from-bits-to-bytes-understanding-sequential-access-in-memory-and-storage-1b712cc2c27d">From Bits to Bytes: Understanding Sequential Access in Memory and Storage</a></li>
+                <li><a href="https://medium.com/illumination/one-core-many-threads-the-art-of-single-cpu-multithreading-33c3b8e607ab">One Core, Many Threads: The Art of Single-CPU Multithreading</a></li>
+                <li><a href="https://medium.com/illumination/why-you-shouldnt-read-directly-from-disk-f951585121b5">Why You Shouldn't Read Directly from Disk</a></li>
+                <li><a href="https://medium.com/illumination/beyond-the-cpu-exploring-the-memory-controllers-role-in-computing-a904731fedf1">Beyond the CPU: Exploring the Memory Controller's Role in Computing</a></li>
+                <li><a href="https://medium.com/nerd-for-tech/beyond-single-core-orchestrating-threads-across-cores-de651429bbb1">Beyond Single-Core: Orchestrating Threads Across Cores</a></li>
+                <li><a href="https://medium.com/illumination/optimizing-memory-access-a-practical-guide-to-scheduling-algorithms-01a8de0c50da">Optimizing Memory Access: A Practical Guide to Scheduling Algorithms</a></li>
+                <li><a href="https://x.com/chessMan786/status/1827366554344026434">Multithreading in a Single CPU</a></li>
+                <li><a href="https://x.com/chessMan786/status/1828446452168958455">Multithreading on Multiple CPUs</a></li>
+                <li><a href="https://x.com/chessMan786/status/1822550037404246339">Linux's Cloning Trick: Understanding fork() and the Magic of Copy-on-Write</a></li>
+                <li><a href="https://x.com/chessMan786/status/1820867735099994341">The Magic of Page Tables</a></li>
+                <li><a href="https://x.com/chessMan786/status/1822275260793983455">Inside the Page Table: A Deep Dive into Virtual Memory Mapping</a></li>
+                <li><a href="https://x.com/chessMan786/status/1821122922221584629">When Virtual Memory Hits a Bottleneck?</a></li>
+                <li><a href="https://x.com/chessMan786/status/1832113280070119634">Beyond RAM: The Hidden World of Page Tables, Large Pages, and Efficient Memory</a></li>
+                <li><a href="https://x.com/chessMan786/status/1831378279343034568">Why Your Computer Isn't as Slow as You Think: The Magic of the TLB</a></li>
+                <li><a href="https://x.com/chessMan786/status/1830945399785374116">From Virtual to Physical: A Step-by-Step Guide to Page Table Operations</a></li>
+                <li><a href="https://x.com/chessMan786/status/1829170581214031905">Concurrency and Memory Models: Why Your Multi-Threaded Code Might Not Behave As Expected</a></li>
+                <li><a href="https://x.com/chessMan786/status/1836448855023669305">Out of Memory Killer</a></li>
+                <li><a href="https://x.com/chessMan786/status/1837451787458236460">Ever Wonder How Linux Survives When it Runs Out of Memory?</a></li>
+            </ul>
+
+            <h2 id="parallel-computing"><i class="fas fa-tasks category-icon"></i>Parallel Computing and CUDA</h2>
+            <p>This section is about making your computer super fast by teaching it to do many things at the same time!
+                You'll learn how to use powerful graphics cards (GPUs) to speed up your programs. We'll use CUDA, a
+                special language that helps you write programs for GPUs. </p>
+            <ul>
+                <li><a href="https://medium.com/ai-mind-labs/introduction-to-cuda-bc7331f0f987">Introduction to CUDA</a></li>
+                <li><a href="https://medium.com/ai-mind-labs/cuda-beyond-the-basics-292859332345">CUDA Beyond the Basics</a></li>
+                <li><a href="https://medium.com/ai-mind-labs/unlocking-cudas-potential-thread-hierarchy-and-parallel-execution-a629aecf5d22">Unlocking CUDA's Potential: Thread Hierarchy and Parallel Execution</a></li>
+            </ul>
+
+            <h2 id="software-architecture"><i class="fas fa-project-diagram category-icon"></i>Software Architecture</h2>
+            <p>This section is about designing and building strong, well-organized software systems. We'll
+                explore different ways to structure your software projects, like using "microservices" (which are like
+                small, independent programs that work together).</p>
+            <ul>
+                <li><a href="https://medium.com/faun/deep-dive-into-monolith-and-microservices-2b284e206472">Deep Dive into Monolith and Microservices</a></li>
+                <li><a href="https://x.com/chessMan786/status/1756625642492412025">Event-Driven Architectures</a></li>
+            </ul>
+
+            <h2 id="frontend-development"><i class="fas fa-laptop-code category-icon"></i>Frontend Development</h2>
+            <p>You'll learn how to make websites look good, respond to clicks and inputs, and provide a great user
+                experience. We'll cover important web technologies and learn how to use frameworks that make building
+                websites easier.</p>
+            <ul>
+                <li><a href="https://medium.com/@mohitmishra786687/everything-about-http-55c9aba440eb">Everything About HTTP</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/domain-name-system-d988239fdb15">Domain Name System</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/introductitypescript-1d4eed2c2094">Introduction to TypeScript</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/introduction-to-angular-1087f1639b39">Introduction to Angular</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/modules-and-routers-6ef6896ab25">Modules and Routers</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/components-metadata-and-data-binding-1703d5c5a592">Components, Metadata and Data Binding</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/getting-into-component-of-angular-5d43e5b10c26">Getting into Component of Angular</a></li>
+            </ul>
+
+            <h2 id="devops"><i class="fas fa-cogs category-icon"></i>DevOps</h2>
+            <p> This section is about building and delivering software faster and more reliably. We'll explore tools that
+                help automate this process and make sure everything runs smoothly. </p>
+            <ul>
+                <li><a href="https://medium.com/@mohitmishra786687/docker-513f26227578">Docker</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/kubernetes-d77d1ab438c0">Kubernetes</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/kafka-485a40493c4">Kafka</a></li>
+                <li><a href="https://medium.com/@mohitmishra786687/quarkus-9a686b46c9e1">Quarkus</a></li>
+            </ul>
+
+            <h2 id="distributed-systems"><i class="fas fa-network-wired category-icon"></i>Distributed Systems</h2>
+            <p> This section teaches you how to design and build these complex systems. We'll cover important concepts that help explain how to
+                build systems that are fast, reliable, and can handle lots of information. </p>
+            <ul>
+                <li><a href="https://medium.com/illumination/the-clockwork-of-distributed-systems-a-guide-to-timestamping-solutions-part-1-0a4bb70c47b9">The Clockwork of Distributed Systems: A Guide to Timestamping Solutions (Part-1)</a></li>
+                <li><a href="https://x.com/chessMan786/status/1813389140219818268">The CAP Theorem: Often Misunderstood</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 Under the Hood. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com/yourtwitter" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/yourlinkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const countElement = document.getElementById('count');
+            const backToTopButton = document.querySelector('.back-to-top');
+            const modeToggle = document.getElementById('mode-toggle');
+            const searchInput = document.getElementById('search-input');
+            
+            // Determine if we're running locally or on GitHub Pages
+            const isLocal = window.location.protocol === 'file:';
+            
+            // Set the namespace based on the environment
+            const namespace = isLocal ? 'underthehood-local' : 'mohitmishra786-underthehood';
+            const key = 'homepage-views';
+
+            // Function to update the view count
+            function updateViewCount() {
+                if (isLocal) {
+                    // For local testing, use localStorage to simulate view counts
+                    let count = localStorage.getItem('localViewCount') || 47869; 
+                    count = parseInt(count) + 1;
+                    localStorage.setItem('localViewCount', count);
+                    countElement.textContent = count;
+                } else {
+                    // For the live site, use CountAPI
+                    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            countElement.textContent = data.value;
+                        })
+                        .catch(error => {
+                            console.error('Error updating view count:', error);
+                            countElement.textContent = 'Error loading count';
+                        });
+                }
+            }
+
+            // Call the function to update the view count
+            updateViewCount();
+
+            // Back to Top button functionality
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Dark/Light mode toggle
+            modeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                const icon = modeToggle.querySelector('i');
+                icon.classList.toggle('fa-sun');
+                icon.classList.toggle('fa-moon');
+            });
+
+            // Simple search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const articles = document.querySelectorAll('.column ul li');
+                
+                articles.forEach(article => {
+                    const title = article.querySelector('a').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        article.style.display = '';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
 </html>
